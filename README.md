@@ -1,5 +1,6 @@
-# ak-vue-components
-一个基于Vue CLI 3.0，Babel7，VUE2.6封装的阿康VUE-UI组件库模版 
+# @yykj/ak-vue-components
+
+一个基于 Vue CLI 3.0，Babel7，VUE2.6 封装的阿康 VUE-UI 组件库模版
 
 ## License
 

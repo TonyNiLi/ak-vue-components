@@ -48,7 +48,7 @@ module.exports = {
 
     resolve: {
       alias: {
-        "ak-vue-components": path.resolve("lib"),
+        "@yykj/ak-vue-components": path.resolve("lib"),
         "@": resolve("src")
       }
     }

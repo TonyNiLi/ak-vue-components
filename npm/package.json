@@ -1,7 +1,7 @@
 {
-  "name": "ak-vue-components",
-  "version": "1.1.9",
-  "description": "a vue  component frame",
+  "name": "@yykj/ak-vue-components",
+  "version": "1.0.0",
+  "description": "阿康前端组件",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
