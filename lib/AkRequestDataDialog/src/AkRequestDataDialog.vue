@@ -117,11 +117,34 @@ export default {
       default: "data.data"
     },
     /**
-     * 是否显示提交结果的消息
+     * 是否显示提交成功的消息
+     * 默认显示
      */
-     showSubmitResultMessage: {
+     showSubmitSuccessMessage: {
       type: [Boolean],
       default: true
+    },
+    /**
+     * 提交成功提醒文案
+     */
+    successMessageTip: {
+      type: String,
+      default: ""
+    },
+    /**
+     * 是否显示提交错误的消息
+     * 默认显示
+     */
+     showSubmitErrorMessage: {
+      type: [Boolean],
+      default: true
+    },
+    /**
+     * 提交错误提醒文案
+     */
+     errorMessageTip: {
+      type: String,
+      default: ""
     },
   },
   data() {
@@ -231,10 +254,11 @@ export default {
           if (this.closeDialogOnSubmitSuccess) {
             this.close();
           }
-          if(this.showSubmitResultMessage) {
+          if(this.showSubmitSuccessMessage) {
+            const message = this.successMessageTip? this.successMessageTip : r.data.message || '操作成功'
             Message({
               type: 'success',
-              message: r.data.message
+              message: message
             });
           }
           this.$emit('submit-success', r, this.reponseData);
@@ -243,10 +267,11 @@ export default {
           this.reponseData = {};
 
           this.loading = false;
-          if(this.showSubmitResultMessage) {
+          if(this.showSubmitErrorMessage) {
+            const message = this.errorMessageTip? this.errorMessageTip : e.message || '操作失败'
             Message({
               type: 'error',
-              message: e.message || e || '提交错误'
+              message: message
             });
           }
           this.$emit('submit-error', e, this.reponseData);
