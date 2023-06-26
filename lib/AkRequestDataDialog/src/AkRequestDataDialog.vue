@@ -115,7 +115,14 @@ export default {
     responseDataPath: {
       type: String,
       default: "data.data"
-    }
+    },
+    /**
+     * 是否显示提交结果的消息
+     */
+     showSubmitResultMessage: {
+      type: [Boolean],
+      default: true
+    },
   },
   data() {
     return {
@@ -224,20 +231,24 @@ export default {
           if (this.closeDialogOnSubmitSuccess) {
             this.close();
           }
-          Message({
-            type: 'success',
-            message: r.data.message
-          });
+          if(this.showSubmitResultMessage) {
+            Message({
+              type: 'success',
+              message: r.data.message
+            });
+          }
           this.$emit('submit-success', r, this.reponseData);
         })
         .catch((e) => {
           this.reponseData = {};
 
           this.loading = false;
-          Message({
-            type: 'error',
-            message: e.message || e || '提交错误'
-          });
+          if(this.showSubmitResultMessage) {
+            Message({
+              type: 'error',
+              message: e.message || e || '提交错误'
+            });
+          }
           this.$emit('submit-error', e, this.reponseData);
         });
     },
